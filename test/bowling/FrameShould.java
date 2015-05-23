@@ -23,4 +23,12 @@ public class FrameShould {
         assertThat(frame.rolls(), is(2));
     }
 
+    @Test
+    public void have_four_pins_when_two_pins_are_knocked_down_in_both_rolls() {
+        Frame frame = new Frame('2', '2');
+        assertThat(frame.firstRoll(), is(2));
+        assertThat(frame.secondRoll(), is(2));
+        assertThat(frame.rolls(), is(4));
+    }
+
 }
