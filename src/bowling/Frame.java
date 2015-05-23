@@ -2,7 +2,6 @@ package bowling;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class Frame {
 
@@ -16,6 +15,14 @@ public class Frame {
 
     private int parseToInt(char roll) {
         return roll == '-' ? 0 : Character.getNumericValue(roll);
+    }
+
+    public int firstRoll() {
+        return pins.get(0);
+    }
+
+    public int secondRoll() {
+        return pins.get(1);
     }
 
     public int rolls() {
