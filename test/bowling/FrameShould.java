@@ -39,4 +39,17 @@ public class FrameShould {
         assertThat(frame.rolls(), is(10));
     }
 
+    @Test
+    public void have_ten_pins_when_there_is_a_strike () {
+        Frame frame = new Frame('X');
+        assertThat(frame.firstRoll(), is(10));
+        assertThat(frame.rolls(), is(10));
+    }
+
+    @Test (expected = IndexOutOfBoundsException.class)
+    public void have_not_second_roll_when_there_is_a_strike () {
+        assertThat(new Frame('X').secondRoll(), is(10));
+    }
+
+
 }

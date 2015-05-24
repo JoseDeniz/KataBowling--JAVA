@@ -9,8 +9,7 @@ public class Frame {
 
     public Frame(char... rolls) {
         pins = new ArrayList<>();
-        pins.add(parseToInt(rolls[0]));
-        pins.add(parseToInt(rolls[1]));
+        for (char roll : rolls) pins.add(parseToInt(roll));
     }
 
     private int parseToInt(char roll) {
