@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Frame {
 
-    List<Integer> pins;
+    private List<Integer> pins;
 
     public Frame(char... rolls) {
         pins = new ArrayList<>();
@@ -14,6 +14,8 @@ public class Frame {
     }
 
     private int parseToInt(char roll) {
+        if (roll == 'X') return 10;
+        else if (roll == '/') return 10 - pins.get(0);
         return roll == '-' ? 0 : Character.getNumericValue(roll);
     }
 

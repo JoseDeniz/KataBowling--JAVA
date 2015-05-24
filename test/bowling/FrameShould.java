@@ -31,4 +31,12 @@ public class FrameShould {
         assertThat(frame.rolls(), is(4));
     }
 
+    @Test
+    public void have_ten_pins_when_there_is_a_spare () {
+        Frame frame = new Frame('2', '/');
+        assertThat(frame.firstRoll(), is(2));
+        assertThat(frame.secondRoll(), is(8));
+        assertThat(frame.rolls(), is(10));
+    }
+
 }
