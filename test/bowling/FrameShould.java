@@ -2,6 +2,8 @@ package bowling;
 
 import org.junit.Test;
 
+import static bowling.FrameType.SPARE;
+import static bowling.FrameType.STRIKE;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
 
@@ -29,12 +31,14 @@ public class FrameShould {
     public void have_ten_pins_when_there_is_a_spare () {
         Frame frame = new Frame('2', '/');
         assertThat(frame.rolls(), is(10));
+        assertThat(frame.type(), is(SPARE));
     }
 
     @Test
     public void have_ten_pins_when_there_is_a_strike () {
         Frame frame = new Frame('X');
         assertThat(frame.rolls(), is(10));
+        assertThat(frame.type(), is(STRIKE));
     }
 
 }

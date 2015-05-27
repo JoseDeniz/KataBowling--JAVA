@@ -3,20 +3,37 @@ package bowling;
 import java.util.ArrayList;
 import java.util.List;
 
+import static bowling.FrameType.SPARE;
+import static bowling.FrameType.STRIKE;
 import static java.lang.Character.getNumericValue;
 
 public class Frame {
 
     private List<Integer> pins;
+    private FrameType type;
 
     public Frame(char... rolls) {
         pins = new ArrayList<>();
-        for (char roll : rolls) pins.add(parseToInt(roll));
+        for (char roll : rolls) pins.add(parseRoll(roll));
+    }
+
+    private int parseRoll(char roll) {
+        if (roll == 'X') return strike();
+        else if (roll == '/') return spare();
+        return parseToInt(roll);
+    }
+
+    private int strike() {
+        type = STRIKE;
+        return 10;
+    }
+
+    private int spare() {
+        type = SPARE;
+        return 10 - pins.get(0);
     }
 
     private int parseToInt(char roll) {
-        if (roll == 'X') return 10;
-        else if (roll == '/') return 10 - pins.get(0);
         return roll == '-' ? 0 : getNumericValue(roll);
     }
 
@@ -24,5 +41,9 @@ public class Frame {
         return pins.stream()
                    .reduce(Integer::sum)
                    .get();
+    }
+
+    public FrameType type() {
+        return type;
     }
 }
