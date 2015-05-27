@@ -10,11 +10,18 @@ public class Line {
     }
 
     private void createFrames(String input) {
-        int frameIndex = 0;
-        for (int i = 0; i < input.length(); i += 2) {
-            frames[frameIndex] = new Frame(input.charAt(i), input.charAt(i + 1));
-            frameIndex++;
-        }
+        createFirstNineFrames(input);
+        createLastFrame(input);
+    }
+
+    private void createFirstNineFrames(String input) {
+        for (int i = 0; i < frames.length - 1; i++)
+            frames[i] = new Frame(input.charAt(i));
+    }
+
+    private void createLastFrame(String input) {
+        char[] lastRoll = input.substring(frames.length - 1).toCharArray();
+        frames[9] = new Frame(lastRoll);
     }
 
     public Frame[] frames() {
