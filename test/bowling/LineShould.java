@@ -7,19 +7,23 @@ import static org.hamcrest.Matchers.is;
 
 public class LineShould {
 
+    public static final String ANY_PIN_KNOCKED = "--------------------";
+    public static final String REGULAR_LINE = "--23----------------";
+
     @Test
     public void have_all_frames_to_zero_when_any_pins_are_knocked_down() {
-        Frame[] frames = new Line("--------------------").frames();
+        Frame[] frames = new Line(ANY_PIN_KNOCKED).frames();
         for (Frame frame : frames)
             assertThat(frame.rolls(), is(0));
     }
 
     @Test
-    public void have_first_nine_frames_to_ten_and_the_last_frame_to_thirty_when_all_rolls_are_strikes() {
-        Frame[] frames = new Line("XXXXXXXXXXXX").frames();
-        for (int i = 0; i < frames.length - 1; i++)
-            assertThat(frames[i].rolls(), is(10));
-        assertThat(frames[9].rolls(), is(30));
+    public void have_the_second_frame_to_five_only_when_there_are_two_pins_knocked_down_in_the_second_roll() {
+        Frame[] frames = new Line(REGULAR_LINE).frames();
+        assertThat(frames[0].rolls(), is(0));
+        assertThat(frames[1].rolls(), is(5));
+        for (int i = 2; i < frames.length; i++)
+            assertThat(frames[i].rolls(), is(0));
     }
 
 }
