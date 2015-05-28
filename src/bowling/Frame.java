@@ -17,6 +17,20 @@ public class Frame {
         for (char roll : rolls) pins.add(parseRoll(roll));
     }
 
+    public int getRoll(int index) {
+        return pins.get(index);
+    }
+
+    public int rolls() {
+        return pins.stream()
+                .reduce(Integer::sum)
+                .get();
+    }
+
+    public FrameType type() {
+        return type;
+    }
+
     private int parseRoll(char roll) {
         if (roll == 'X') return strike();
         else if (roll == '/') return spare();
@@ -35,15 +49,5 @@ public class Frame {
 
     private int parseToInt(char roll) {
         return roll == '-' ? 0 : getNumericValue(roll);
-    }
-
-    public int rolls() {
-        return pins.stream()
-                   .reduce(Integer::sum)
-                   .get();
-    }
-
-    public FrameType type() {
-        return type;
     }
 }
