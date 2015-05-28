@@ -27,6 +27,11 @@ public class Frame {
                 .get();
     }
 
+    @Override
+    public boolean equals(Object otherFrame) {
+        return pins.equals(((Frame) otherFrame).pins);
+    }
+
     public FrameType type() {
         return type;
     }
