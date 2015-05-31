@@ -7,14 +7,14 @@ import static org.hamcrest.Matchers.is;
 
 public class LineShould {
 
-    public static final String ANY_PIN_KNOCKED_LINE = "--------------------";
+    public static final String NOT_A_SINGLE_PIN_KNOCKED_LINE = "--------------------";
     public static final String REGULAR_LINE = "--23----------------";
     public static final String SPARE_LINE = "--2/----------------";
     public static final String ONE_STRIKE_LINE = "--X----------------";
 
     @Test
-    public void have_all_frames_to_zero_when_any_pins_are_knocked_down() {
-        Frame[] frames = new Line(ANY_PIN_KNOCKED_LINE).frames();
+    public void have_all_frames_to_zero_when_not_a_single_pin_is_knocked_down() {
+        Frame[] frames = new Line(NOT_A_SINGLE_PIN_KNOCKED_LINE).frames();
         for (Frame frame : frames)
             assertThat(frame.rolls(), is(0));
     }

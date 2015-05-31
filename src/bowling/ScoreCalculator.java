@@ -1,5 +1,7 @@
 package bowling;
 
+import static bowling.FrameType.*;
+
 public class ScoreCalculator {
 
     private int score;
@@ -14,7 +16,12 @@ public class ScoreCalculator {
             score += frame.rolls();
     }
 
-    public int score() {
+    private boolean isStrike(Frame frame) {
+        return frame.type() == STRIKE;
+    }
+
+    public int totalScore() {
         return score;
     }
+
 }
