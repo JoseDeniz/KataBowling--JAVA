@@ -10,6 +10,7 @@ public class ScoreCalculatorShould {
     public static final String NOT_A_SINGLE_PIN_KNOCKED_LINE = "--------------------";
     public static final String REGULAR_LINE = "--23----------------";
     private static final String ONLY_SPARES_LINE = "5/5/5/5/5/5/5/5/5/5/5";
+    private static final String ONLY_STRIKES_LINE = "XXXXXXXXXXXX";
 
     @Test
     public void should_have_zero_points_when_not_a_single_pin_is_knocked_down() {
@@ -27,6 +28,12 @@ public class ScoreCalculatorShould {
     public void should_have_fifty_hundred_points_when_there_are_only_spare_frames() {
         ScoreCalculator scoreCalculator = new ScoreCalculator(new Line(ONLY_SPARES_LINE));
         assertThat(scoreCalculator.totalScore(), is(150));
+    }
+
+    @Test
+    public void should_have_three_hundred_points_when_there_are_only_strike_frames() {
+        ScoreCalculator scoreCalculator = new ScoreCalculator(new Line(ONLY_STRIKES_LINE));
+        assertThat(scoreCalculator.totalScore(), is(300));
     }
 
 }
