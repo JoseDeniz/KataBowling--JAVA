@@ -13,6 +13,7 @@ public class FrameBuilderShould {
     private static final Frame REGULAR_FRAME = new Frame('2', '3');
     private static final Frame SPARE_FRAME = new Frame('2', '/');
     private static final Frame STRIKE_FRAME = new Frame('X');
+    private static final Frame THREE_STRIKES_FRAME = new Frame('X', 'X', 'X');
 
     @Test
     public void build_a_frame_with_zero_rolls() {
@@ -37,6 +38,13 @@ public class FrameBuilderShould {
     public void build_a_frame_with_a_strike() {
         Frame frame = FrameBuilder.build('X');
         assertThat(frame, is(STRIKE_FRAME));
+        assertThat(frame.type(), is(STRIKE));
+    }
+
+    @Test
+    public void build_a_frame_with_three_strikes() {
+        Frame frame = FrameBuilder.build('X', 'X', 'X');
+        assertThat(frame, is(THREE_STRIKES_FRAME));
         assertThat(frame.type(), is(STRIKE));
     }
 
