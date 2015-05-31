@@ -25,7 +25,7 @@ public class ScoreCalculatorShould {
     }
 
     @Test
-    public void should_have_fifty_hundred_points_when_there_are_only_spare_frames() {
+    public void should_have_one_hundred_and_fifty_points_when_there_are_only_spare_frames() {
         ScoreCalculator scoreCalculator = new ScoreCalculator(new Line(ONLY_SPARES_LINE));
         assertThat(scoreCalculator.totalScore(), is(150));
     }
