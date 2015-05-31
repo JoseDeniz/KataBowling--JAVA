@@ -13,11 +13,11 @@ public class Line {
 
     private void buildFrames(String input) {
         char[] rolls = input.toCharArray();
-        int lastRollIndex = buildNineFirstFramesAndGetLastIndex(rolls);
+        int lastRollIndex = buildFirstNineFramesAndGetLastIndex(rolls);
         buildLastFrame(input, lastRollIndex);
     }
 
-    private int buildNineFirstFramesAndGetLastIndex(char[] rolls) {
+    private int buildFirstNineFramesAndGetLastIndex(char[] rolls) {
         int index = 0, currentRollPosition = 0;
         while (index < 9) frames[index++] =
                 rolls[currentRollPosition] == 'X' ?

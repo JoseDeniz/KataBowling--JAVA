@@ -1,6 +1,6 @@
 package bowling;
 
-import static bowling.FrameType.*;
+import static bowling.FrameType.SPARE;
 
 public class ScoreCalculator {
 
@@ -12,12 +12,25 @@ public class ScoreCalculator {
 
     private void calculateScoreFrom(Line line) {
         Frame[] frames = line.frames();
-        for (Frame frame : frames)
-            score += frame.rolls();
+        calculateFirstNineFrames(frames);
+        calculateLastFrame(frames[frames.length - 1]);
     }
 
-    private boolean isStrike(Frame frame) {
-        return frame.type() == STRIKE;
+    private void calculateFirstNineFrames(Frame[] frames) {
+        for (int i = 0; i < frames.length - 1; i++) {
+            Frame actualFrame = frames[i];
+            score += isSpare(actualFrame) ?
+                actualFrame.rolls() + frames[i + 1].getRoll(0) :
+                actualFrame.rolls();
+        }
+    }
+
+    private void calculateLastFrame(Frame lastFrame) {
+        score += lastFrame.rolls();
+    }
+
+    private boolean isSpare(Frame frame) {
+        return frame.type() == SPARE;
     }
 
     public int totalScore() {
