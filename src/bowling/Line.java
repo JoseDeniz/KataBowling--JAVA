@@ -27,11 +27,12 @@ public class Line {
     }
 
     private void buildLastFrame(String input, int currentRollPosition) {
-        char[] lastFrame = input.substring(currentRollPosition).toCharArray();
-        frames[9] = build(lastFrame);
+        char[] lastFrameRolls = input.substring(currentRollPosition).toCharArray();
+        frames[9] = build(lastFrameRolls);
     }
 
     public Frame[] frames() {
         return frames;
     }
+
 }

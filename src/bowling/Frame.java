@@ -14,7 +14,8 @@ public class Frame {
 
     public Frame(char... rolls) {
         pins = new ArrayList<>();
-        for (char roll : rolls) pins.add(parseRoll(roll));
+        for (char roll : rolls)
+            pins.add(parseRoll(roll));
     }
 
     public int getRoll(int index) {
@@ -23,10 +24,11 @@ public class Frame {
 
     public int rolls() {
         return pins.stream()
-                .reduce(Integer::sum)
-                .get();
+                   .reduce(Integer::sum)
+                   .get();
     }
 
+    @SuppressWarnings("EqualsWhichDoesntCheckParameterClass")
     @Override
     public boolean equals(Object otherFrame) {
         return pins.equals(((Frame) otherFrame).pins);
@@ -55,4 +57,5 @@ public class Frame {
     private int parseToInt(char roll) {
         return roll == '-' ? 0 : getNumericValue(roll);
     }
+
 }
