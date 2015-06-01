@@ -1,2 +1,3 @@
 # KataBowling
-Kata bowling made in Java based in http://codingdojo.org/
+
+Kata bowling made in Java based in the KataBowling from http://codingdojo.org/
